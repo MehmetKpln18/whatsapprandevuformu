@@ -1,10 +1,6 @@
 .img-upload { height: 260px }
 #img-upload { width: 100%; height: 100%; object-fit: cover; display: block }
 .img-upload-fav { width: 28px !important; height: 28px !important; object-fit: cover; display: block }
-input { pointer-events: none; }
-textarea { pointer-events: none; }
-button { pointer-events: none; }
-.btn-warning, .btn-danger { pointer-events: none; }
 .img-responsive { width: 100%; height: 100%; object-fit: cover; display: block }
 #customers-testimonials .item-details { background-color: #333333; color: #fff; padding: 20px 10px; text-align: left }
 #customers-testimonials .item-details h5 { margin: 0 0 15px; font-size: 18px; line-height: 18px }
