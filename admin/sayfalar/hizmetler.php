@@ -7,21 +7,15 @@ if( isset($_SESSION['yonetici']) && !empty($_SESSION['yonetici']) ){
   $records->execute();
   $results = $records->fetch(PDO::FETCH_ASSOC);
   $user = NULL;
-  if( count($results) > 0){
-    $user = $results;
-  }
+  if( count($results) > 0){ $user = $results; }
 }
-else
-{
-  header("Location: giris.php");
-  die();
-}
+else { header("Location: giris.php"); die(); }
 ?>
 
 <?php
 if (isset($_GET['id'])) {
   $numaras = $_GET['id']; 
-  $sil = $conn -> prepare("DELETE FROM urunler where id = :id");
+  $sil = $conn -> prepare("DELETE FROM hizmetler where id = :id");
   $sil->bindParam(':id', $_GET['id']);
   $sil-> execute();
   if($sil){
