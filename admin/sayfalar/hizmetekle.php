@@ -7,15 +7,9 @@ if( isset($_SESSION['yonetici']) && !empty($_SESSION['yonetici']) ){
   $records->execute();
   $results = $records->fetch(PDO::FETCH_ASSOC);
   $user = NULL;
-  if( count($results) > 0){
-    $user = $results;
-  }
+  if( count($results) > 0){ $user = $results; }
 }
-else
-{
-  header("Location: giris.php");
-  die();
-}
+else { header("Location: giris.php"); die(); }
 ?>
 
 <?php 
@@ -36,7 +30,7 @@ if(isset($_POST['Gonder']))
   $newfilename = round(microtime(true)) . '.' . end($temp);
   move_uploaded_file($_FILES["urunresim"]["tmp_name"], "assets/resim/" . $newfilename);
   $urunresim = $newfilename;
-  $stmt = $conn->prepare('INSERT INTO urunler(urunbaslik, urunicerik, urunfiyat, urunresim, urunstok, ekleyen) VALUES (:urunbaslik, :urunicerik, :urunfiyat, :urunresim, :ekleyen)');
+  $stmt = $conn->prepare('INSERT INTO hizmetler(urunbaslik, urunicerik, urunfiyat, urunresim, ekleyen) VALUES (:urunbaslik, :urunicerik, :urunfiyat, :urunresim, :ekleyen)');
   $stmt->bindParam(':urunbaslik',$urunbaslik);
   $stmt->bindParam(':urunicerik',$urunicerik);
   $stmt->bindParam(':urunfiyat',$urunfiyat);
@@ -46,12 +40,12 @@ if(isset($_POST['Gonder']))
   if($stmt){
     $mesaj = '<div class="alert alert-dismissible alert-success">
     <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>Ürün Eklendi !</strong>
+    <strong>Hizmet Eklendi !</strong>
     </div>';
   }else{
     $mesaj = '<div class="alert alert-dismissible alert-danger">
     <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>Ürün Ekleme Başarısız !</strong>
+    <strong>Hizmet Ekleme Başarısız !</strong>
     </div>';
   }
 }
